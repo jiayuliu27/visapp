@@ -2,11 +2,12 @@ import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
 
 import template from "./visualization.component.html";
-// import style from "./demo.component.scss";
+import style from "./visualization.component.scss";
 
 @Component({
   selector: "visualization",
-  template
+  template,
+  styles: [ style ]
 })
 export class VisualizationComponent {
 	msg: string;

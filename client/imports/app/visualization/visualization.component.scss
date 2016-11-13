@@ -1,0 +1,26 @@
+#bytes {
+	width: 99%;
+	height: 100%;
+	flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+}
+
+.byte {
+	border: none;
+}
+
+.byte-label {
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+	border: 1px solid #999;
+}
+
+.byte-content {
+	display: inline-block;
+	width: 200px;
+	height: 50px;
+	border: 1px solid #666
+}
