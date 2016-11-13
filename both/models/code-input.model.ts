@@ -4,4 +4,5 @@ export interface CodeInput extends CollectionObject {
   varName: string;
   val: number;
   const: string;
+  size?: number;
 }

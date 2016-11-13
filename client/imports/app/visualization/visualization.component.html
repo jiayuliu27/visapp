@@ -1,9 +1,7 @@
-<div id="bytes">
-	<div class="byte" *ngFor="let input of inputs | async">
-		<div class="byte-label">{{ input.varName }}</div>
-		{{ input.const }}
-		<div class="byte-content">{{ input.val }}</div>
-	</div>
-
-	
-</div>
+<h1>Visualization</h1>
+<md-grid-list cols="1" rowHeight="50px" gutterSize="4px" id="bytes">
+	<md-grid-tile class="byte" *ngFor="let input of inputs | async">
+		<div class="byte-label" >{{ input.varName }}</div>
+		<div class="byte-content" [ngClass]="input.const === 'const' ? 'constant' : ''">{{ input.val }}</div>
+		</md-grid-tile>
+</md-grid-list>

@@ -13,14 +13,19 @@
 
 .byte-label {
 	display: inline-block;
-	width: 50px;
-	height: 50px;
-	border: 1px solid #999;
+	width: 30%;
+	height: 98%;
+	overflow: scroll;
 }
 
 .byte-content {
 	display: inline-block;
-	width: 200px;
-	height: 50px;
-	border: 1px solid #666
+	width: 60%;
+	height: 98%;
+	overflow: scroll;
+	background-color: #00BCD4;
+}
+
+.constant {
+	background-color: #999;
 }
