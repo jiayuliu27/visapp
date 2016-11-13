@@ -1,1 +1,18 @@
-<h1>{{ msg }}</h1>
+<!-- <button md-raised-button color="primary" (click)="showInputForm = !showInputForm">Number</button> -->
+<button md-fab color="primary" *ngIf="!showInputForm" (click)="showInputForm = !showInputForm">
+    <md-icon class="md-24">add</md-icon>
+</button>
+<form *ngIf="showInputForm" [formGroup]="addInputForm" (ngSubmit)="addInput()">
+	<md-input placeholder="const or let" formControlName="const" ></md-input>
+	<md-input placeholder="Variable name" formControlName="varName" ></md-input>
+	<md-input placeholder="Value" formControlName="val" ></md-input>
+	<button md-fab type="submit">
+	    <md-icon class="md-24">add</md-icon>
+	</button>
+</form>
+<!-- <button md-raised-button color="primary">String</button>
+<button md-raised-button color="primary">Boolean</button>
+<button md-raised-button color="primary" disabled>Array</button>
+<button md-raised-button color="primary" disabled>Object</button>
+<button md-raised-button color="primary" disabled>Function</button> -->
+<input-list></input-list>

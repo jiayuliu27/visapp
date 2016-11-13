@@ -7,5 +7,6 @@ $app-warn:    md-palette($md-red);
 $app-theme: md-light-theme($app-primary, $app-accent, $app-warn);
 @include angular-material-theme($app-theme);
 body, html {
-
+  background-color: #f8f8f8;
+  font-family: 'Muli', sans-serif;
 }
