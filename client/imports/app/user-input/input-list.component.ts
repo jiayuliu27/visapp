@@ -1,9 +1,9 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
-import { Observable, Subscription, Subject } from "rxjs";
-import { MeteorObservable } from "meteor-rxjs";
-
-import { CodeInput } from "../../../../both/models/code-input.model";
-import { CodeInputs } from "../../../../both/collections/code-input.collection";
+import { Component } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+ 
+import { CodeInputs } from '../../../../both/collections/code-input.collection';
+import { CodeInput } from '../../../../both/models/code-input.model';
+ 
 import template from './input-list.component.html';
  
 @Component({
@@ -11,19 +11,14 @@ import template from './input-list.component.html';
   template
 })
 export class InputListComponent {
-  codeInputs: Observable<CodeInput[]>;
-  codeInputsSub: Subscription;
-  codeInputsSize: number = 0;
+  inputs: Observable<CodeInput[]>;
+ 
   constructor() {
-
+    this.inputs = CodeInputs.find({}).zone();
+    console.log(this.inputs);
   }
-  ngOnInit() {
-
-  }
-  removeUserInput(codeInput: CodeInput): void {
-    CodeInputs.remove(codeInput._id);
-  }
-  ngOnDestroy() {
-    this.codeInputsSub.unsubscribe();
+ 
+  removeInput(input: CodeInput): void {
+    CodeInputs.remove(input._id);
   }
 }

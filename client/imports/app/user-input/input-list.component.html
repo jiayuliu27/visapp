@@ -1,3 +1,4 @@
-<div *ngFor="let codeInput of codeInput | async">
-{{ codeInput.const }} {{ codeInput.varName }} = {{ codeInput.val }};
-</div>
+<md-card *ngFor="let input of inputs | async">
+<button (click)="removeInput(input)">X</button>
+	{{ input.const }} {{ input.varName }} = {{ input.val }};
+</md-card>

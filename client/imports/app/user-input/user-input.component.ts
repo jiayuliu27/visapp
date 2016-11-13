@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Observable } from "rxjs";
 
 import { CodeInputs } from "../../../../both/collections/code-input.collection";
+import { CodeInput } from "../../../../both/models/code-input.model";
 
 import template from "./user-input.component.html";
 // import style from "./demo.component.scss";
@@ -12,21 +13,30 @@ import template from "./user-input.component.html";
   template
 })
 export class UserInputComponent implements OnInit {
-	msg: string;
 	showInputForm: boolean;
 	addInputForm: FormGroup;
+  showEditForm: boolean;
+  addEditForm: FormGroup;
+  inputs: Observable<CodeInput[]>;
+  codeInput: CodeInput;
 
   constructor(private formBuilder: FormBuilder) {
-  	this.msg = "Hello this is user input component";
   	this.showInputForm = false;
+    this.showEditForm = false;
+    // this.inputs = CodeInputs.find({}).zone();
   }
 
   ngOnInit() {
   	this.addInputForm = this.formBuilder.group({
   		varName: ['', Validators.required],
   		const: ['', Validators.required],
-  		val: ['', Validators.required]
+  		val: [undefined]
   	});
+
+    this.addEditForm = this.formBuilder.group({
+      varName: ['', Validators.required],
+      val: ['', Validators.required]
+    })
   }
 
   addInput(): void {
@@ -42,9 +52,31 @@ export class UserInputComponent implements OnInit {
 			const: this.addInputForm.value.const,
 			val: this.addInputForm.value.val
 		});
-
+    console.log(CodeInputs.find({}).zone());
       // this.addInputForm.reset();
+      this.showInputForm = false;
     }
+  }
+
+  editInput(): void {
+    if(this.addEditForm.valid) {
+      console.log("edit input not yet implemented");
+      this.showEditForm = false;
+    }
+  }
+
+  saveInput() {
+    this.codeInput = CodeInputs.findOne({
+      varName: this.addEditForm.value.varName
+    });
+
+    CodeInputs.update(this.codeInput._id, {
+      $set: {
+        varName: this.codeInput.varName,
+        const: this.codeInput.const,
+        val: this.codeInput.val
+      }
+    });
   }
 
 }
