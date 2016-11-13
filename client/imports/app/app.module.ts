@@ -1,14 +1,17 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
+import { MaterialModule } from "@angular/material";
+
 import { AppComponent } from "./app.component";
-import { DemoComponent } from "./demo/demo.component";
-import { DemoDataService } from "./demo/demo-data.service";
+import { InputComponent } from "./user-input/user-input.component";
+// import { VisualizationComponent } from "./visualization/visualization.component";
 
 @NgModule({
   // Components, Pipes, Directive
   declarations: [
     AppComponent,
-    DemoComponent
+    InputComponent,
+    // VisualizationComponent
   ],
   // Entry Components
   entryComponents: [
@@ -16,11 +19,11 @@ import { DemoDataService } from "./demo/demo-data.service";
   ],
   // Providers
   providers: [
-    DemoDataService
   ],
   // Modules
   imports: [
-    BrowserModule
+    BrowserModule,
+    MaterialModule.forRoot()
   ],
   // Main Component
   bootstrap: [ AppComponent ]
