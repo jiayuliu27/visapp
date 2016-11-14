@@ -29,16 +29,26 @@ export class UserInputComponent implements OnInit {
     this.runningFactorial = false;
     this.step = 0;
     this.steps = [
-      { const: "function", val: "factorial(5)" },
-      { const: "let", varName: "n", val: 5},
-      { const: "function", val: "factorial(4)" },
-      { const: "let", varName: "n", val: 4},
-      { const: "function", val: "factorial(3)" },
-      { const: "let", varName: "n", val: 3},
-      { const: "function", val: "factorial(2)" },
-      { const: "let", varName: "n", val: 2},
-      { const: "function", val: "factorial(1)" },
-      { const: "let", varName: "n", val: 1}
+      { _id: "55", const: "function", val: "factorial(5)" },
+      { _id: "5", const: "let", varName: "n", val: 5},
+      { _id: "44", const: "function", val: "factorial(4)" },
+      { _id: "4", const: "let", varName: "n", val: 4},
+      { _id: "33", const: "function", val: "factorial(3)" },
+      { _id: "3", const: "let", varName: "n", val: 3},
+      { _id: "22", const: "function", val: "factorial(2)" },
+      { _id: "2", const: "let", varName: "n", val: 2},
+      { _id: "11", const: "function", val: "factorial(1)" },
+      { _id: "1", const: "let", varName: "n", val: 1},
+      { _id: "11", val: 1 },
+      { _id: "1" },
+      { _id: "22", val: 2 },
+      { _id: "2" },
+      { _id: "33", val: 6 },
+      { _id: "3" },
+      { _id: "44", val: 24 },
+      { _id: "4" },
+      { _id: "55", val: 120 },
+      { _id: "5" }
     ];
     // this.inputs = CodeInputs.find({}).zone();
   }
@@ -84,8 +94,6 @@ export class UserInputComponent implements OnInit {
         varName: this.addEditForm.value.varName
       });
 
-      console.log(this.codeInput);
-
       if(this.codeInput.const !== "const") {
         CodeInputs.update(this.codeInput._id, {
           $set: {
@@ -101,8 +109,32 @@ export class UserInputComponent implements OnInit {
   }
 
   factorial(): void {
-    let step = this.steps[this.step++]
-    CodeInputs.insert(step);
+    if(this.step === 20) {
+      CodeInputs.remove("55");
+      this.step = 0;
+      this.runningFactorial = false;
+      return;
+    }
+    let step = this.steps[this.step]
+    console.log(this.step, step)
+    if (this.step < 10) {
+      CodeInputs.insert(step);
+
+    } else if(this.step % 2 === 0) {
+      console.log("update");
+      CodeInputs.update(step._id, {
+        $set: {
+          val: step.val
+        }
+      });
+      let id = (parseInt(step._id) - 11).toString();
+      CodeInputs.remove(id);
+
+    } else {
+      console.log("remove")
+      CodeInputs.remove(step._id);
+    }
+    ++this.step;
   }
 
   runFactorial(): void {
