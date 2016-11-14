@@ -1,4 +1,7 @@
+<div class="input-lines">
 <md-card *ngFor="let input of inputs | async">
 <button md-icon-button (click)="removeInput(input)">X</button>
-	{{ input.const }} {{ input.varName }} = {{ input.val }};
+	<div style="display:inline-block;" *ngIf="input.const !== 'function'">{{ input.const }} {{ input.varName }} = {{ input.val }};</div>
+	<div style="display: inline-block;" *ngIf="input.const === 'function'">{{ input.val }}</div>
 </md-card>
+</div>

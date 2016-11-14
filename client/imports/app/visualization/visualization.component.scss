@@ -1,6 +1,6 @@
 #bytes {
 	width: 99%;
-	height: 100%;
+	max-height: 627px;
 	flex: 1;
     display: flex;
     flex-direction: column;
@@ -9,7 +9,19 @@
 
 .byte {
 	border: none;
+	// animation-duration: 3s;
+	// animation-name: slidein;
 }
+
+// @keyframes slidein {
+// 	from {
+// 		opacity: 0;
+// 	}
+
+// 	to {
+// 		opacity: 100;
+// 	}
+// }
 
 .byte-label {
 	display: inline-block;
