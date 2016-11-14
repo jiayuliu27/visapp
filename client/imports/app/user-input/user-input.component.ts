@@ -17,12 +17,29 @@ export class UserInputComponent implements OnInit {
 	addInputForm: FormGroup;
   showEditForm: boolean;
   addEditForm: FormGroup;
+  runningFactorial: boolean;
+  step: number;
+  steps: any[];
   inputs: Observable<CodeInput[]>;
   codeInput: CodeInput;
 
   constructor(private formBuilder: FormBuilder) {
   	this.showInputForm = false;
     this.showEditForm = false;
+    this.runningFactorial = false;
+    this.step = 0;
+    this.steps = [
+      { const: "function", val: "factorial(5)" },
+      { const: "let", varName: "n", val: 5},
+      { const: "function", val: "factorial(4)" },
+      { const: "let", varName: "n", val: 4},
+      { const: "function", val: "factorial(3)" },
+      { const: "let", varName: "n", val: 3},
+      { const: "function", val: "factorial(2)" },
+      { const: "let", varName: "n", val: 2},
+      { const: "function", val: "factorial(1)" },
+      { const: "let", varName: "n", val: 1}
+    ];
     // this.inputs = CodeInputs.find({}).zone();
   }
 
@@ -83,8 +100,15 @@ export class UserInputComponent implements OnInit {
     }
   }
 
-  runFactorial(): void {
-    
+  factorial(): void {
+    let step = this.steps[this.step++]
+    CodeInputs.insert(step);
   }
+
+  runFactorial(): void {
+    this.runningFactorial = true;
+    this.factorial();
+  }
+  
 
 }

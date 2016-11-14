@@ -20,8 +20,11 @@
 	    <md-icon class="md-24">edit</md-icon>
 	</button>
 </form>
-<button md-fab color="primary" *ngIf="!showEditForm && !showInputForm" (click)="runFactorial()">
+
+<button md-fab color="primary" *ngIf="!showEditForm && !showInputForm && !runningFactorial" (click)="runFactorial()">
     <md-icon class="md-24">code</md-icon>
 </button>
-
+<button md-fab color="primary" *ngIf="runningFactorial" (click)="runFactorial()">
+    <md-icon class="md-24">input</md-icon>
+</button>
 <input-list></input-list>
