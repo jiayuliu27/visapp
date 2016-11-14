@@ -6,7 +6,6 @@ import { CodeInputs } from "../../../../both/collections/code-input.collection";
 import { CodeInput } from "../../../../both/models/code-input.model";
 
 import template from "./user-input.component.html";
-// import style from "./demo.component.scss";
 
 @Component({
   selector: "user-input",
@@ -50,7 +49,6 @@ export class UserInputComponent implements OnInit {
       { _id: "55", val: 120 },
       { _id: "5" }
     ];
-    // this.inputs = CodeInputs.find({}).zone();
   }
 
   ngOnInit() {
@@ -67,10 +65,6 @@ export class UserInputComponent implements OnInit {
   }
 
   addInput(): void {
-    // if (!Meteor.userId()) {
-    //   alert('Please log in to add a party');
-    //   return;
-    // }
 
     if (this.addInputForm.valid) {
     	console.log("form is valid");
