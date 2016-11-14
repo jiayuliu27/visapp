@@ -46,12 +46,12 @@ export class UserInputComponent implements OnInit {
     // }
 
     if (this.addInputForm.valid) {
-    	console.log("form is valid")
-		CodeInputs.insert({
-			varName: this.addInputForm.value.varName,
-			const: this.addInputForm.value.const,
-			val: this.addInputForm.value.val
-		});
+    	console.log("form is valid");
+  		CodeInputs.insert({
+  			varName: this.addInputForm.value.varName,
+  			const: this.addInputForm.value.const,
+  			val: this.addInputForm.value.val
+  		});
     console.log(CodeInputs.find({}).zone());
       // this.addInputForm.reset();
       this.showInputForm = false;
@@ -60,23 +60,31 @@ export class UserInputComponent implements OnInit {
 
   editInput(): void {
     if(this.addEditForm.valid) {
-      console.log("edit input not yet implemented");
+
       this.showEditForm = false;
+
+      this.codeInput = CodeInputs.findOne({
+        varName: this.addEditForm.value.varName
+      });
+
+      console.log(this.codeInput);
+
+      if(this.codeInput.const !== "const") {
+        CodeInputs.update(this.codeInput._id, {
+          $set: {
+            val: this.addEditForm.value.val
+          }
+        });
+      } else {
+        console.log('var type is const show error modal');
+      }
+    } else {
+      console.log('form is invalid show error modal');
     }
   }
 
-  saveInput() {
-    this.codeInput = CodeInputs.findOne({
-      varName: this.addEditForm.value.varName
-    });
-
-    CodeInputs.update(this.codeInput._id, {
-      $set: {
-        varName: this.codeInput.varName,
-        const: this.codeInput.const,
-        val: this.codeInput.val
-      }
-    });
+  runFactorial(): void {
+    
   }
 
 }

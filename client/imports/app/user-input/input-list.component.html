@@ -1,4 +1,4 @@
 <md-card *ngFor="let input of inputs | async">
-<button (click)="removeInput(input)">X</button>
+<button md-icon-button (click)="removeInput(input)">X</button>
 	{{ input.const }} {{ input.varName }} = {{ input.val }};
 </md-card>

@@ -3,5 +3,5 @@
 	<md-grid-tile class="byte" *ngFor="let input of inputs | async">
 		<div class="byte-label" >{{ input.varName }}</div>
 		<div class="byte-content" [ngClass]="input.const === 'const' ? 'constant' : ''">{{ input.val }}</div>
-		</md-grid-tile>
+	</md-grid-tile>
 </md-grid-list>

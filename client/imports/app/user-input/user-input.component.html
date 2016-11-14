@@ -1,4 +1,3 @@
-<!-- <button md-raised-button color="primary" (click)="showInputForm = !showInputForm">Number</button> -->
 <button md-fab color="primary" *ngIf="!showInputForm && !showEditForm" (click)="showInputForm = !showInputForm">
     <md-icon class="md-24">add</md-icon>
 </button>
@@ -21,9 +20,8 @@
 	    <md-icon class="md-24">edit</md-icon>
 	</button>
 </form>
-<!-- <button md-raised-button color="primary">String</button>
-<button md-raised-button color="primary">Boolean</button>
-<button md-raised-button color="primary" disabled>Array</button>
-<button md-raised-button color="primary" disabled>Object</button>
-<button md-raised-button color="primary" disabled>Function</button> -->
+<button md-fab color="primary" *ngIf="!showEditForm && !showInputForm" (click)="runFactorial()">
+    <md-icon class="md-24">code</md-icon>
+</button>
+
 <input-list></input-list>
